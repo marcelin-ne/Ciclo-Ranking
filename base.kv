@@ -1,0 +1,169 @@
+<Button>
+    font_size: 50
+    size_hint: 0.2, 0.2
+<MyLayout>
+    #Grid general de toda la pantalla 
+    BoxLayout:
+        orientation: 'vertical'
+        size: root.width, root.height
+        padding: 15
+        spacing: 20 #spacing between widgets
+    #Titulo de la aplicacion
+        Label:
+            text:'Ciclo Rankine'
+            background_color: 182/255,66/255,245/255,1
+            font_size: 50
+            size_hint: (1, .1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            #Text Property
+            #color:(0,1,0,1) 
+            bold: True
+            italic: True
+            #outline_color: 0,0,1
+            #outline_width: 10
+        #Division de la pantalla general en dos columnas 
+        GridLayout:
+            cols:2
+            #Primera Columna donde estaran los datos de entrada
+            GridLayout:
+                cols:2
+                size_hint: (1, .1)
+                Label:
+                    text:'Temperatura de entrada da caldeira (°C)'
+                    color:(0,0,0,1)
+                    font_size: 20
+                TextInput:
+                    id: temp_entrada_caldera
+                    multiline: False
+                    font_size: 20
+                    input_filter: 'float'
+                    on_text_validate: root.calcular()
+                Label:
+                    text:'Presion a la entrada de la turbina (kPa)'
+                    color:(0,0,0,1)
+                    font_size: 20
+                TextInput:
+                    id: prep_entrada_caldera
+                    multiline: False
+                    font_size: 20
+                    input_filter: 'float'
+                    on_text_validate: root.calcular()
+                Label:
+                    text:'Presion de extraccion (kPa)'
+                    color:(0,0,0,1)
+                    font_size: 20
+                TextInput:
+                    id: presion_extraccion
+                    multiline: False
+                    font_size: 20
+                    input_filter: 'float'
+                    on_text_validate: root.calcular()
+                Label:
+                    text:'Presion en el condesador (kPa)'
+                    color:(0,0,0,1)
+                    font_size: 20
+                TextInput:
+                    id: presion_condensador
+                    multiline: False
+                    font_size: 20
+                    input_filter: 'float'
+                    on_text_validate: root.calcular()
+                Label:
+                    text:'Eficiencia de las bombas'
+                    color:(0,0,0,1)
+                    font_size: 20
+                TextInput:
+                    id: eficiencia_bombas
+                    multiline: False
+                    font_size: 20
+                    input_filter: 'float'
+                    on_text_validate: root.calcular()
+                Label:
+                    text:'Eficiencia de la turbina'
+                    color:(0,0,0,1)
+                    font_size: 20
+                TextInput:
+                    id: eficiencia_turbina
+                    multiline: False
+                    font_size: 20
+                    input_filter: 'float'
+                    on_text_validate: root.calcular()
+                #Aqui van los botones de calcular y limpiar
+                Button:
+                    text: 'Calcular'
+                    font_size: 20
+                    on_press: root.calcular()
+                    size_hint: 0.4, 0.4
+                Button:
+                    text: 'Limpiar'
+                    font_size: 20
+                    on_press: root.limpiar()
+                    size_hint: 0.4, 0.4
+                #Aqui va la caja general de resultados 
+                #Titulo de la caja de resultados
+                Label:
+                    text:'Resultados'
+                    background_color: 182/255,66/255,245/255,1
+                    font_size: 30
+                    canvas.before:
+                        Color:
+                            rgba: self.background_color
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+                    #Text Property
+                    #color:(0,1,0,1) 
+                    bold: True
+                    italic: True
+                    #outline_color: 0,0,1
+                    #outline_width: 10
+                Label:
+                    text:""
+                #Caja de resultados
+                Label:
+                    text:'Eficiciecia termica del ciclo (%)'
+                    color:(0,0,0,1)
+                    font_size: 20
+                Label:
+                    id: eficiencia_termica
+                    text:'Respuesta 1'
+                    color:(0,0,0,1)
+                    font_size: 20
+                Label:
+                    text:'Trabajo neto del ciclo (kW)'
+                    color:(0,0,0,1)
+                    font_size: 20
+                Label:
+                    id: trabajo_neto
+                    text:'Respuesta 2'
+                    color:(0,0,0,1)
+                    font_size: 20
+#Segunda Columna donde estara la Imagen y los resultados
+
+            FloatLayout:
+                orientation: 'vertical'
+                size: root.width, root.height
+                Button:
+                    text:"Top Left"
+            #{"x","y","top","bootom","left","right"}
+                    pos_hint:{'x':0,'top':1}
+                Button:
+                    text:"Top Right"
+                    pos_hint:{'x':.7,'top':1}
+                Image:
+                    source: 'ciclo_rankine_base.png'
+                    allow_stretch: True
+                    keep_ratio: True
+                    pos_hint:{'x':.01,'top':.96}
+                    # Cambia el tamaño a 300x200 píxeles
+                Button:
+                    text:"Bottom Left"
+                    pos_hint:{'x':0}
+                Button:
+                    text:"Bottom Right"
+                    pos_hint:{'x':0.7,'bottom':1}
