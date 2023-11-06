@@ -11,8 +11,20 @@ from kivy.core.window import Window
 Builder.load_file('base.kv')
 #Construct the Layout
 class MyLayout(Widget):
-    pass
-    #Create press function
+    #Create calcular function
+    def resolve(self):
+        #Get the value from the TextInputs
+        #Convert the value to a float
+        #Add the values together
+        #Print the sum to the console
+        #self.ids.my_label.text = str(answer)
+        pass
+    #Create clear function
+    def clear(self):
+        #Clear the TextInputs
+        #Clear the label
+        pass
+    
 
 #Call the class
 class AwesomeApp(App):

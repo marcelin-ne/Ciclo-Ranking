@@ -29,18 +29,7 @@ wbap = ve3*((P4/1000)-(P3/1000))                                 # kJ/kg
 h4 = wbap + h3                                                   # kJ/kg
 qin = h5-h4                                                      # kJ/kg
 
-# # b) calor rechazado qout=h7-h1
-P7 = Pbbp*1000                                                   # Pa
-s7 = s5*1000                                                     # J/kg K
-x7 = CP.PropsSI("Q", "P", P7, "S", s7, sustancia)
-x = 0
-hf = CP.PropsSI("H", "P", P7, "Q", x, sustancia)/1000            # kJ/kg
-hfg = 2335 # kJ/kg                                               # kJ/kg
-h7s = hf+x7*hfg                                                  # kJ/kg 
-h7 = h5-(ns_turb*(h5-h7s))                                       # kJ/kg 
-P1 = Pbbp*1000                                                   # Pa
-h1 = CP.PropsSI("H", "Q", x, "P", P1, sustancia)/1000            # kJ/kg 
-qout = h7-h1                                                     # kJ/kg 
+                                                   # kJ/kg 
 
 # # c) Trabajo de la turbina 
 s6 = s5*1000                                                     # J/kg K 
