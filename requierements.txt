@@ -11,3 +11,4 @@ requests
 setuptools
 urllib3
 pyinstaller
+CoolProp

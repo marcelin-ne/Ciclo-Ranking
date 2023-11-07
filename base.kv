@@ -34,61 +34,61 @@
                 cols:2
                 size_hint: (1, .1)
                 Label:
-                    text:'Temperatura de entrada da caldeira (°C)'
+                    text:'Pbbp'
                     color:(0,0,0,1)
                     font_size: 20
                 TextInput:
-                    id: temp_entrada_caldera
+                    id: pbbp
                     multiline: False
                     font_size: 20
                     input_filter: 'float'
                     on_text_validate: root.calcular()
                 Label:
-                    text:'Presion a la entrada de la turbina (kPa)'
+                    text:'pbap'
                     color:(0,0,0,1)
                     font_size: 20
                 TextInput:
-                    id: prep_entrada_caldera
+                    id: pbap
                     multiline: False
                     font_size: 20
                     input_filter: 'float'
                     on_text_validate: root.calcular()
                 Label:
-                    text:'Presion de extraccion (kPa)'
+                    text:'psal_cald'
                     color:(0,0,0,1)
                     font_size: 20
                 TextInput:
-                    id: presion_extraccion
+                    id: psal_cald
                     multiline: False
                     font_size: 20
                     input_filter: 'float'
                     on_text_validate: root.calcular()
                 Label:
-                    text:'Presion en el condesador (kPa)'
+                    text:'tsal_cald'
                     color:(0,0,0,1)
                     font_size: 20
                 TextInput:
-                    id: presion_condensador
+                    id: tsal_cald
                     multiline: False
                     font_size: 20
                     input_filter: 'float'
                     on_text_validate: root.calcular()
                 Label:
-                    text:'Eficiencia de las bombas'
+                    text:'ns_turb'
                     color:(0,0,0,1)
                     font_size: 20
                 TextInput:
-                    id: eficiencia_bombas
+                    id: ns_turb
                     multiline: False
                     font_size: 20
                     input_filter: 'float'
                     on_text_validate: root.calcular()
                 Label:
-                    text:'Eficiencia de la turbina'
+                    text:'ns_bomba'
                     color:(0,0,0,1)
                     font_size: 20
                 TextInput:
-                    id: eficiencia_turbina
+                    id: ns_bomba
                     multiline: False
                     font_size: 20
                     input_filter: 'float'
