@@ -30,12 +30,12 @@
                     pos: self.pos
                     size: self.size
             #Text Property
-            #color:(0,1,0,1) 
+            #color:(0,1,0,1)
             bold: True
             italic: True
             #outline_color: 0,0,1
             #outline_width: 10
-        #Division de la pantalla general en dos columnas 
+        #Division de la pantalla general en dos columnas
         GridLayout:
             cols:2
             padding: 15
@@ -141,13 +141,13 @@
                     text: 'Calcular'
                     font_size: 20
                     on_press: root.resolve()
-                    size_hint: 0.4, 0.4
+                    size_hint: 0.5, 0.5
                 Button:
                     text: 'Limpiar'
                     font_size: 20
                     size_hint: 0.4, 0.4
                     on_press: root.clear()
-                #Aqui va la caja general de resultados 
+                #Aqui va la caja general de resultados
                 #Titulo de la caja de resultados
                 Label:
                     text:'Resultados'
@@ -160,7 +160,7 @@
                             pos: self.pos
                             size: self.size
                     #Text Property
-                    #color:(0,1,0,1) 
+                    #color:(0,1,0,1)
                     bold: True
                     italic: True
                     #outline_color: 0,0,1
@@ -192,6 +192,15 @@
                 cols:1
                 size_hint: (1, .1)
                 border: 2,2,2,2
-                ResponsiveDrawing:
-                    size_hint: 1, 1 #Tamaño completo de la celda 
-                    pos_hint: {'center_x': 0.5, 'center_y': 0.5} #Posicionamiento en el centro de la celda
+                FloatLayout:
+                    Image:
+                        source:"Ciclo_rakine_1.png"
+                        size_hint: 1, 1 #Tamaño completo de la celda
+                        # allow_stretch: True
+                        # keep_ratio: True
+                        size_hint: 0.5, 0.5 #Tamaño completo de la celda
+                        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                        #pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    ResponsiveDrawing:
+                        size_hint: 1, 1 #Tamaño completo de la celda
+                        pos_hint: {'center_x': 0.5, 'center_y': 0.5} #Posicionamiento en el centro de la celda

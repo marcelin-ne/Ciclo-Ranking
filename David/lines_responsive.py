@@ -6,15 +6,25 @@ from kivy.properties import AliasProperty
 from kivy.core.window import Window
 class ResponsiveDrawing(Widget):
     #Inicializar las longitudes
-    length_h6=NumericProperty(0.20)
-    length_h8=NumericProperty(0.20)
-    length_h1=NumericProperty(0.20)
-    length_h2=NumericProperty(0.20)
-    length_h9=NumericProperty(0.20)
-    length_h5=NumericProperty(0.20)
-    length_h4=NumericProperty(0.20)
-    length_h3=NumericProperty(0.20)
-    length_h7=NumericProperty(0.20)
+    length_h6=NumericProperty(0.35)
+
+    # Creamos un AliasProperty para length_h8 que esté vinculado a length_h6
+    length_h8 = AliasProperty(lambda self: self._get_length_h8(), 
+                        None, bind=('length_h6',))
+    length_h1 = AliasProperty(lambda self: self._get_length_h1(),
+                        None, bind=('length_h6',))
+    length_h2 = AliasProperty(lambda self: self._get_length_h2(),
+                        None, bind=('length_h6',))
+    length_h9 = AliasProperty(lambda self: self._get_length_h9(),
+                        None, bind=('length_h6',))
+    length_h5 = AliasProperty(lambda self: self._get_length_h5(),
+                        None, bind=('length_h6',))
+    length_h4 = AliasProperty(lambda self: self._get_length_h4(),
+                        None, bind=('length_h6',))
+    length_h3 = AliasProperty(lambda self: self._get_length_h3(),
+                        None, bind=('length_h6',))
+    length_h7= AliasProperty(lambda self: self._get_length_h7(),
+                        None, bind=('length_h6',))
 
     #Contructor de la clase con h6 de parametro 
     def __init__(self, h6:float, **kwargs):
@@ -31,7 +41,7 @@ class ResponsiveDrawing(Widget):
         self.redraw()
 
     def on_length_update(self, *args):
-        length_h6 = NumericProperty(0.20)
+        length_h6 = NumericProperty(0.35)
         # Creamos un AliasProperty para length_h8 que esté vinculado a length_h6
         length_h8 = AliasProperty(lambda self: self._get_length_h8(),
                         None, bind=('length_h6',))
