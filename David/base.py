@@ -28,30 +28,32 @@ class MyLayout(Widget):
         self.ids.eficiencia_termica.text = str(cr_close.results['eta']) + " %"
         self.ids.trabajo_neto.text = str(cr_close.results['wturb']) + " kJ/kg"
         h6 = cr_close.hs['h6']
+        h6 = float(h6)
 
-        # Ajusta length_h6 en un rango logarítmico entre 0.10 y 0.35
-        # Ajusta length_h6 en un rango exponencial entre 0.10 y 0.35
-        valor_minimo = 0.20
-        valor_maximo = 0.35
+        # Definir los valores extremos de H6 y los correspondientes valores de length_h6
+        h6_min = 419.24
+        h6_max = 5109.09
+        length_h6_min = 0.20
+        length_h6_max = 0.35
 
-    # Ajusta el valor_H6 a un rango exponencial entre 1 y 10000
-        valor_H6_ajustado = max(1, min(10000, h6))
-        valor_H6_ajustado = math.exp(0.002 * valor_H6_ajustado)  # Puedes ajustar el factor 0.002 según tus necesidades
+    # Calcular la proporción de H6 en relación con los valores extremos
+        proporción_h6 = (h6 - h6_min) / (h6_max - h6_min)
 
-    # Normaliza el valor_H6 entre 0 y 1
-        valor_H6_ajustado = (h6 - 1) / (10000 - 1)
+    # Calcular el valor correspondiente para length_h6 en el rango deseado
+        length_h6 = length_h6_min + proporción_h6 * (length_h6_max - length_h6_min)
 
-    # Aplica la escala exponencial al rango de 0 a 1
-        length_h6_ajustado = valor_minimo + (valor_maximo - valor_minimo) * (
-        np.exp(0.002 * valor_H6_ajustado) - np.exp(0)
-    ) / (np.exp(0.002 * 1) - np.exp(0))
+    # Asegurarse de que length_h6 esté dentro del rango [0.20, 0.35]
+        length_h6 = max(min(length_h6, length_h6_max), length_h6_min)
+
+
         responsive_drawing = ResponsiveDrawing()
         print(responsive_drawing.length_h6)
-        length_h6_ajustado = float(length_h6_ajustado)
-        responsive_drawing.length_h6= length_h6_ajustado
+        length_h6_ajustado = float(length_h6)
+        responsive_drawing.on_length_update(h6)
+        responsive_drawing.redraw()
         print(responsive_drawing.length_h6)
 
-        return responsive_drawing
+
 
     #Create clear function
     def clear(self):

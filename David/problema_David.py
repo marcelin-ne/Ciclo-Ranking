@@ -7,11 +7,11 @@ import math
 # Definir las propiedades de entrada
 p1 = 30000  # Presión a la salida del condensador en Pa
 x1 = 0.0 # Calidad salida del condensador
-p2 = 4000000 # Presión a la salida de la segunda bomba en Pa
+p2 = 200000 # Presión a la salida de la segunda bomba en Pa
 p3 = 2000000  # Presión a la salida del calentador de agua de alimentación baja en Pa
 x3 = 0.0 # condensación completa en el calentador cerrado de agua de alimentación
 p4 = p2 # Presión a la salida de la segunda bomba
-T6 = 500 # Temperatura en la salida de la caldera/entrada de la turbina en °C
+T6 = 100 # Temperatura en la salida de la caldera/entrada de la turbina en °C
 p5 = p2 # Presión a la entrada de la caldera en Pa
 mp = 15 # flujo masico en kg/s
 p6 = p5 # Presión a la entrada de la turbina en Pa
@@ -80,26 +80,25 @@ print("q_out = {0:.2f} kJ/kg".format(q_out/1000))
 print("La eficiencia térmica del ciclo es {0:.2f}%".format(eta * 100))
 print("El trabajo neto del ciclo es {0:.2f} kW".format(Wnet/1000))
 
-def ajustar_length_h6(valor_H6):
-    # Ajusta length_h6 en un rango exponencial entre 0.10 y 0.35
-    valor_minimo = 0.20
-    valor_maximo = 0.35
+def calcular_length_h6(h6):
+    # Definir los valores extremos de H6 y los correspondientes valores de length_h6
+    h6_min = 419.24
+    h6_max = 5109.09
+    length_h6_min = 0.20
+    length_h6_max = 0.35
 
-    # Ajusta el valor_H6 a un rango exponencial entre 1 y 10000
-    valor_H6_ajustado = max(1, min(10000, valor_H6))
-    valor_H6_ajustado = math.exp(0.002 * valor_H6_ajustado)  # Puedes ajustar el factor 0.002 según tus necesidades
+    # Calcular la proporción de H6 en relación con los valores extremos
+    proporción_h6 = (h6 - h6_min) / (h6_max - h6_min)
 
-   # Normaliza el valor_H6 entre 0 y 1
-    valor_H6_ajustado = (valor_H6 - 1) / (10000 - 1)
+    # Calcular el valor correspondiente para length_h6 en el rango deseado
+    length_h6 = length_h6_min + proporción_h6 * (length_h6_max - length_h6_min)
 
-    # Aplica la escala exponencial al rango de 0 a 1
-    length_h6_ajustado = valor_minimo + (valor_maximo - valor_minimo) * (
-        np.exp(0.002 * valor_H6_ajustado) - np.exp(0)
-    ) / (np.exp(0.002 * 1) - np.exp(0))
+    # Asegurarse de que length_h6 esté dentro del rango [0.20, 0.35]
+    length_h6 = max(min(length_h6, length_h6_max), length_h6_min)
 
-    return length_h6_ajustado
+    return length_h6
 
-# Ejemplo de uso
-valor_H6 = 3446.02
-length_h6_ajustado = ajustar_length_h6(valor_H6)
-print(length_h6_ajustado)
+# Ejemplo de uso:
+H6_valor = h6 # Puedes cambiar este valor según tus necesidades
+resultado = calcular_length_h6(H6_valor)
+print(resultado)
