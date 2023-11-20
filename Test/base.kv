@@ -1,0 +1,175 @@
+<BaseLayout>:
+    cols: 3
+    spacing: 10
+    padding: 10
+
+    # Columna 1: Logo y InputText
+    BoxLayout:
+        orientation: 'vertical'
+
+        Image:
+            source: 'path/to/your/logo.png'  # Reemplaza con la ruta de tu logo
+            size_hint: (None, None)
+            size: 50, 50
+
+        GridLayout:
+            cols: 2
+            size_hint: (1, .9)
+            padding: 15
+            spacing: 20  # spacing between widgets
+
+            Label:
+                text: 'Presión a la salida del condensador en Pa'
+                color: (0, 0, 0, 1)
+                font_size: 20
+
+            TextInput:
+                id: p1
+                multiline: False
+                font_size: 20
+                input_filter: 'float'
+                on_text_validate: root.calcular()
+
+            Label:
+                text: 'Calidad salida del condensador'
+                color: (0, 0, 0, 1)
+                font_size: 20
+
+            TextInput:
+                id: x1
+                multiline: False
+                font_size: 20
+                input_filter: 'float'
+                #on_text_validate: root.calcular()
+
+            Label:
+                text: 'Presión a la salida de la segunda bomba en Pa'
+                color: (0, 0, 0, 1)
+                font_size: 20
+
+            TextInput:
+                id: p2
+                multiline: False
+                font_size: 20
+                input_filter: 'float'
+                #on_text_validate: root.calcular()
+
+            Label:
+                text: 'Presión a la salida del calentador de agua de alimentación baja en Pa'
+                color: (0, 0, 0, 1)
+                font_size: 20
+
+            TextInput:
+                id: p3
+                multiline: False
+                font_size: 20
+                input_filter: 'float'
+                #on_text_validate: root.calcular()
+
+            Label:
+                text: 'Condensación completa en el calentador cerrado de agua de alimentación'
+                color: (0, 0, 0, 1)
+                font_size: 20
+
+            TextInput:
+                id: x3
+                multiline: False
+                font_size: 20
+                input_filter: 'float'
+                #on_text_validate: root.calcular()
+
+            Label:
+                text: 'Temperatura en la salida de la caldera/entrada de la turbina en °C'
+                color: (0, 0, 0, 1)
+                font_size: 20
+
+            TextInput:
+                id: T6
+                multiline: False
+                font_size: 20
+                input_filter: 'float'
+                #on_text_validate: root.calcular()
+
+            Label:
+                text: 'Flujo masico en kg/s'
+                color: (0, 0, 0, 1)
+                font_size: 20
+
+            TextInput:
+                id: mp
+                multiline: False
+                font_size: 20
+                input_filter: 'float'
+                #on_text_validate: root.calcular()
+
+            Label:
+                text: 'Eficiencia para las bombas'
+                color: (0, 0, 0, 1)
+                font_size: 20
+
+            TextInput:
+                id: nb
+                multiline: False
+                font_size: 20
+                input_filter: 'float'
+                on_text_validate: root.calcular()
+
+            Label:
+                text: 'Eficiencia de la turbina'
+                color: (0, 0, 0, 1)
+                font_size: 20
+
+            TextInput:
+                id: nt
+                multiline: False
+                font_size: 20
+                input_filter: 'float'
+                on_text_validate: root.calcular()
+
+            Button:
+                text: 'Calcular'
+                on_press: root.calcular()
+
+            Button:
+                text: 'Reiniciar'
+                on_press: root.reiniciar()
+
+    # Columna 2: Título grande y Caja para dibujar
+    BoxLayout:
+        orientation: 'vertical'
+
+        Label:
+            text: 'Título Grande'
+            font_size: 20
+
+        Image:
+            source: 'path/to/your/drawing.png'  # Reemplaza con la ruta de tu imagen para dibujar
+            size_hint_y: None
+            height: 150  # Ajusta la altura según tus necesidades
+
+    # Columna 3: Icono, Título "Results", Caja de Respuesta, Porcentaje y Pestañas
+    BoxLayout:
+        orientation: 'vertical'
+
+        Image:
+            source: 'path/to/your/icon.png'  # Reemplaza con la ruta de tu icono
+            size_hint: (None, None)
+            size: 50, 50
+
+        Label:
+            text: 'Results'
+            font_size: 16
+
+        TextInput:
+            hint_text: 'Escribe tu respuesta aquí'
+
+        Label:
+            text: 'Porcentaje'
+            font_size: 14
+
+        ProgressBar:
+            value: 50  # Puedes ajustar el valor según tus necesidades
+
+        Spinner:
+            text: 'Opción 1'
+            values: ['Opción 1', 'Opción 2', 'Opción 3']
