@@ -1,0 +1,157 @@
+<Button>
+    font_size: 50
+    size_hint: 0.2, 0.2
+<MyLayout>
+    #Grid general de toda la pantalla 
+    BoxLayout:
+        orientation: 'vertical'
+        size: root.width, root.height
+        padding: 15
+        spacing: 20 #spacing between widgets
+    #Titulo de la aplicacion
+        Label:
+            text:'Ciclo Rankine Calentador Cerrado'
+            background_color: 182/255,66/255,245/255,1
+            font_size: 50
+            size_hint: (1, .1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            #Text Property
+            #color:(0,1,0,1) 
+            bold: True
+            italic: True
+            #outline_color: 0,0,1
+            #outline_width: 10
+        #Division de la pantalla general en dos columnas 
+        GridLayout:
+            cols:2
+            #Primera Columna donde estaran los datos de entrada
+            GridLayout:
+                cols:2
+                size_hint: (1, .1)
+                Label:
+                    text:'Pbbp'
+                    color:(0,0,0,1)
+                    font_size: 20
+                TextInput:
+                    id: pbbp
+                    multiline: False
+                    font_size: 20
+                    input_filter: 'float'
+                    on_text_validate: root.calcular()
+                Label:
+                    text:'pbap'
+                    color:(0,0,0,1)
+                    font_size: 20
+                TextInput:
+                    id: pbap
+                    multiline: False
+                    font_size: 20
+                    input_filter: 'float'
+                    on_text_validate: root.calcular()
+                Label:
+                    text:'psal_cald'
+                    color:(0,0,0,1)
+                    font_size: 20
+                TextInput:
+                    id: psal_cald
+                    multiline: False
+                    font_size: 20
+                    input_filter: 'float'
+                    on_text_validate: root.calcular()
+                Label:
+                    text:'tsal_cald'
+                    color:(0,0,0,1)
+                    font_size: 20
+                TextInput:
+                    id: tsal_cald
+                    multiline: False
+                    font_size: 20
+                    input_filter: 'float'
+                    on_text_validate: root.calcular()
+                Label:
+                    text:'ns_turb'
+                    color:(0,0,0,1)
+                    font_size: 20
+                TextInput:
+                    id: ns_turb
+                    multiline: False
+                    font_size: 20
+                    input_filter: 'float'
+                    on_text_validate: root.calcular()
+                Label:
+                    text:'ns_bomba'
+                    color:(0,0,0,1)
+                    font_size: 20
+                TextInput:
+                    id: ns_bomba
+                    multiline: False
+                    font_size: 20
+                    input_filter: 'float'
+                    on_text_validate: root.calcular()
+                #Aqui van los botones de calcular y limpiar
+                Button:
+                    text: 'Calcular'
+                    font_size: 20
+                    on_press: root.resolve()
+                    size_hint: 0.4, 0.4
+                Button:
+                    text: 'Limpiar'
+                    font_size: 20
+                    size_hint: 0.4, 0.4
+                    on_press: root.clear()
+                #Aqui va la caja general de resultados 
+                #Titulo de la caja de resultados
+                Label:
+                    text:'Resultados'
+                    background_color: 182/255,66/255,245/255,1
+                    font_size: 30
+                    canvas.before:
+                        Color:
+                            rgba: self.background_color
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+                    #Text Property
+                    #color:(0,1,0,1) 
+                    bold: True
+                    italic: True
+                    #outline_color: 0,0,1
+                    #outline_width: 10
+                Label:
+                    text:""
+                #Caja de resultados
+                Label:
+                    text:'Eficiciecia termica del ciclo (%)'
+                    color:(0,0,0,1)
+                    font_size: 20
+                Label:
+                    id: eficiencia_termica
+                    text:'Respuesta 1'
+                    color:(0,0,0,1)
+                    font_size: 20
+                Label:
+                    text:'Trabajo neto del ciclo (kW)'
+                    color:(0,0,0,1)
+                    font_size: 20
+                Label:
+                    id: trabajo_neto
+                    text:'Respuesta 2'
+                    color:(0,0,0,1)
+                    font_size: 20
+#Segunda Columna donde estara la Imagen y los resultados
+
+            GridLayout:
+                cols:1
+                size_hint: (1, .1)
+                Label:
+                    text:'Pbbp'
+                    color:(0,0,0,1)
+                    font_size: 20
+                ResponsiveDrawing:
+                    size_hint: 1, 1 #Tamaño completo de la celda 
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5} #Posicionamiento en el centro de la celda

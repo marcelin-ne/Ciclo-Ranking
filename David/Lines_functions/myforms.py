@@ -31,38 +31,37 @@ class MyForm(BoxLayout):
         print("Hs desde delimeter")
         print(hs)
         ids=self.line_drawer.get_lines_ids()
-        print(ids)
         self.redraw_based_on_hs( hs)
 
     def redraw_based_on_hs(self, hs):
         #h1a
-        self.line_drawer.animate_lines_vertical('h1', hs['h1'])
+        self.line_drawer.animate_lines_horizontal('h1', hs['h1'])
         #h2
-        self.line_drawer.animate_lines_vertical('h2a', hs['h2'])
+        self.line_drawer.animate_lines_horizontal('h2a', hs['h2'])
         #h3
         self.line_drawer.animate_lines_vertical('h3a', hs['h3'])
         #h3b
-        self.line_drawer.animate_lines_horizontal('h3b', hs['h3'])
+        self.line_drawer.animate_lines_vertical('h3b', hs['h3'])
         #h4
-        self.line_drawer.animate_lines_vertical('h4a', hs['h4'])
+        self.line_drawer.animate_lines_horizontal('h4a', hs['h4'])
         #h4b
-        self.line_drawer.animate_lines_horizontal('h4b', hs['h4s'])
+        self.line_drawer.animate_lines_horizontal('h4b', hs['h4'])
         #h5
-        self.line_drawer.animate_lines_vertical('h5a', hs['h5'])
+        self.line_drawer.animate_lines_horizontal('h5a', hs['h5'])
         #h6
-        self.line_drawer.animate_lines_vertical('h6a', hs['h6'])
+        self.line_drawer.animate_lines_horizontal('h6a', hs['h6'])
         #h6b
-        self.line_drawer.animate_lines_horizontal('h6b', hs['h6s'])
+        self.line_drawer.animate_lines_horizontal('h6b', hs['h6'])
         #h7
         self.line_drawer.animate_lines_vertical('h7a', hs['h7'])
         #h7b
-        self.line_drawer.animate_lines_horizontal('h7b', hs['h7s'])
+        self.line_drawer.animate_lines_vertical('h7b', hs['h7s'])
         #h8
         self.line_drawer.animate_lines_vertical('h8a', hs['h8'])
         #h8b
-        self.line_drawer.animate_lines_horizontal('h8b', hs['h8'])
+        self.line_drawer.animate_lines_vertical('h8b', hs['h8'])
         #h9
-        self.line_drawer.animate_lines_vertical('h9a', hs['h9'])
+        self.line_drawer.animate_lines_horizontal('h9a', hs['h9'])
         #h9b
         self.line_drawer.animate_lines_horizontal('h9b', hs['h9'])
 

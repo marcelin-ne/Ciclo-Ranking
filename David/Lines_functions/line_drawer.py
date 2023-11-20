@@ -155,7 +155,7 @@ class LineDrawer(Widget):
         #Dibujar linea que une h6a y h8a
         starx_6h8, starty_6h8 = end_x6b, end_y6b
         endx_6h8, endy_6h8 = starx_6h8+self.width * 0.15 , starty_6h8-self.height * 0.15
-        self.draw_line(starx_6h8, starty_6h8, endx_6h8, endy_6h8, '6h8')
+        #self.draw_line(starx_6h8, starty_6h8, endx_6h8, endy_6h8, '6h8')
         # #Lineas h8a
         start_x8, start_y8 = endx_6h8, endy_6h8
         end_x8, end_y8 = start_x8 + self.width * self.length_h8, start_y8
@@ -167,7 +167,7 @@ class LineDrawer(Widget):
         #Linea que une h8 y h1
         start_x8h1, start_y8h1 = end_x8b, end_y8b
         end_x8h1, end_y8h1 = start_x8h1 - self.width *0.08 , start_y8h1 - self.height * 0.08
-        self.draw_line(start_x8h1, start_y8h1, end_x8h1, end_y8h1, 'h8h1')
+        #self.draw_line(start_x8h1, start_y8h1, end_x8h1, end_y8h1, 'h8h1')
         #Lineas de h1
         start_x1, start_y1 = end_x8h1, end_y8h1
         end_x1, end_y1 = start_x1 , start_y1 - self.height * self.length_h1
@@ -175,7 +175,7 @@ class LineDrawer(Widget):
         #Linea que une h1 y h2
         start_x1h2, start_y1h2 = end_x1, end_y1
         end_x1h2, end_y1h2 = start_x1h2 + self.width * 0.01, start_y1h2 - self.height * 0.06
-        self.draw_line(start_x1h2, start_y1h2, end_x1h2, end_y1h2, 'h1h2')
+        #self.draw_line(start_x1h2, start_y1h2, end_x1h2, end_y1h2, 'h1h2')
         #Lineas de h2
         start_x2, start_y2 = end_x1h2, end_y1h2
         end_x2, end_y2 = start_x2 , start_y2 - self.height * self.length_h2
@@ -187,7 +187,7 @@ class LineDrawer(Widget):
         #Linea que une h2 y h9
         start_x2h9, start_y2h9 = end_x2b, end_y2b
         end_x2h9, end_y2h9 = start_x2h9 - self.width * 0.09, start_y2h9 - self.height * 0.06
-        self.draw_line(start_x2h9, start_y2h9, end_x2h9, end_y2h9, 'h2h9')
+        #self.draw_line(start_x2h9, start_y2h9, end_x2h9, end_y2h9, 'h2h9')
         #Linea h9a
         start_x9, start_y9 = end_x2h9, end_y2h9
         end_x9, end_y9 = start_x9 - self.width * self.length_h9, start_y9
@@ -199,7 +199,7 @@ class LineDrawer(Widget):
         #Linea que une h9 y h5
         start_x9h5, start_y9h5 = end_x9b, end_y9b
         end_x9h5, end_y9h5 = start_x9h5, start_y9h5 + self.height * 0.1
-        self.draw_line(start_x9h5, start_y9h5, end_x9h5, end_y9h5, 'h9h5')
+        #self.draw_line(start_x9h5, start_y9h5, end_x9h5, end_y9h5, 'h9h5')
         #Linea h5a
         start_x5, start_y5 = end_x9h5, end_y9h5
         end_x5, end_y5 = start_x5, start_y5 + self.height * self.length_h5
@@ -207,11 +207,11 @@ class LineDrawer(Widget):
         #Linea que une h5 y h6
         start_x5h6, start_y5h6 = end_x5, end_y5
         end_x5h6, end_y5h6 = end_x6, end_y6
-        self.draw_line(start_x5h6, start_y5h6, end_x5h6, end_y5h6, 'h5h6')
+        #self.draw_line(start_x5h6, start_y5h6, end_x5h6, end_y5h6, 'h5h6')
         #Linea que une h5 y h4
         start_x5h4, start_y5h4 = start_x5, start_y5
         end_x5h4, end_y5h4 = start_x5h4 - self.width * 0.04, start_y5h4 - self.height * 0.09
-        self.draw_line(start_x5h4, start_y5h4, end_x5h4, end_y5h4, 'h5h4')
+        #self.draw_line(start_x5h4, start_y5h4, end_x5h4, end_y5h4, 'h5h4')
         #Linea h4a
         start_x4, start_y4 = end_x5h4, end_y5h4
         end_x4, end_y4 = start_x4, start_y4 - self.height * self.length_h4
@@ -223,7 +223,7 @@ class LineDrawer(Widget):
         # Linea que une h4 y h7 y h2
         start_x4h7, start_y4h7 = end_x4b, end_y4b
         end_x4h7, end_y4h7 = end_x2h9, end_y2h9
-        self.draw_line(start_x4h7, start_y4h7, end_x4h7, end_y4h7, 'h4h7')
+        #self.draw_line(start_x4h7, start_y4h7, end_x4h7, end_y4h7, 'h4h7')
         #Linea h3a
         start_x3, start_y3 = end_x4h7, end_y4h7
         end_x3, end_y3 = start_x3+self.width * self.length_h3, start_y3
@@ -235,7 +235,7 @@ class LineDrawer(Widget):
         #Linea que une h7 y h3
         starx_7h3, starty_7h3 = end_x3b, end_y3b
         endx_7h3, endy_7h3 = start_x3 + self.width * 0.4 , start_y3 + self.height * 0.3
-        self.draw_line(starx_7h3, starty_7h3, endx_7h3, endy_7h3, '7h3')
+        #self.draw_line(starx_7h3, starty_7h3, endx_7h3, endy_7h3, '7h3')
         #Linea h7a
         start_x7, start_y7 = endx_7h3, endy_7h3
         end_x7, end_y7 = start_x7, start_y7 + self.height * self.length_h7
