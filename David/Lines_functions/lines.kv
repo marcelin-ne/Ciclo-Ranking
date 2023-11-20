@@ -1,0 +1,19 @@
+<MyLayout>
+    BoxLayout:
+        orientation: 'vertical'
+        size: root.width, root.height
+
+        padding: 15
+        spacing: 20 #spacing between widgets
+
+        Label:
+            id:my_label
+            text:"Hello World"
+            font_size: 30
+        Button:
+            text:"Click Me"
+            font_size: 30
+            size_hint: 0.5, 0.5
+            pos_hint: {'center_x': 0.5,'center_y': 0.0}
+
+            on_release:root.animate_it(self)
