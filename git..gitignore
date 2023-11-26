@@ -17,3 +17,6 @@ node_modules/
 # Ignorar entorno virtual
 env/
 venv/
+
+#ignorar cache de python
+__pycache__/
