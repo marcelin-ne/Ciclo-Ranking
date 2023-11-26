@@ -25,7 +25,6 @@
             text:'Ciclo Rankine Calentador Cerrado'
             background_color: 182/255,66/255,245/255,1
             font_size: 50
-            size_hint: (1, .1)
             canvas.before:
                 Color:
                     rgba: self.background_color
@@ -46,111 +45,101 @@
             #Primera Columna donde estaran los datos de entrada
             GridLayout:
                 cols:2
-                size_hint: None, None
-                size: 1000, 1200
-                GridLayout:
-                    cols:1
-                    size_hint: (1, 1)
-                    padding: 15
-                    spacing: 20 #spacing between widgets
-                    Label:
-                        text:'Presión a la salida del condensador en Pa'
-                    TextInput:
-                        id: p1
-                        multiline: False
-                        font_size: 20
-                        input_filter: 'float'
-                        on_text_validate: root.calcular()
-                    Label:
-                        text:'Presión a la salida de la segunda bomba en Pa'
-                    TextInput:
-                        id: p2
-                        multiline: False
-                        font_size: 20
-                        input_filter: 'float'
-                        on_text_validate: root.calcular()
-                    Label:
-                        text:'Presión a la salida del calentador de agua de alimentación baja en Pa'
-                    TextInput:
-                        id: p3
-                        multiline: False
-                        font_size: 20
-                        input_filter: 'float'
-                        on_text_validate: root.calcular()
-                    Label:
-                        text:'Temperatura en la salida de la caldera/entrada de la turbina en °C'
-                    TextInput:
-                        id: T6
-                        multiline: False
-                        font_size: 20
-                        input_filter: 'float'
-                        on_text_validate: root.calcular()
-                    Label:
-                        text:'Flujo masico en kg/s'
-                    TextInput:
-                        id: mp
-                        multiline: False
-                        font_size: 20
-                        input_filter: 'float'
-                        on_text_validate: root.calcular()
-                    Label:
-                        text:'Eficiencia para las bombas'
-                    TextInput:
-                        id: nb
-                        multiline: False
-                        font_size: 20
-                        input_filter: 'float'
-                        on_text_validate: root.calcular()
-                    Label:
-                        text:'Eficiencia de la turbina'
-                    TextInput:
-                        id: nt
-                        multiline: False
-                        font_size: 20
-                        input_filter: 'float'
-                        on_text_validate: root.calcular()
+                size_hint:1,.9
+                Label:
+                    text:'Presión a la salida del condensador en Pa'
+                TextInput:
+                    id: p1
+                    multiline: False
+                    font_size: 20
+                    input_filter: 'float'
+                    on_text_validate: root.calcular()
+                Label:
+                    text:'Presión a la salida de la segunda bomba en Pa'
+                TextInput:
+                    id: p2
+                    multiline: False
+                    font_size: 20
+                    input_filter: 'float'
+                    on_text_validate: root.calcular()
+                Label:
+                    text:'Presión a la salida del calentador de agua de alimentación baja en Pa'
+                TextInput:
+                    id: p3
+                    multiline: False
+                    font_size: 20
+                    input_filter: 'float'
+                    on_text_validate: root.calcular()
+                Label:
+                    text:'Temperatura en la salida de la caldera/entrada de la turbina en °C'
+                TextInput:
+                    id: T6
+                    multiline: False
+                    font_size: 20
+                    input_filter: 'float'
+                    on_text_validate: root.calcular()
+                Label:
+                    text:'Flujo masico en kg/s'
+                TextInput:
+                    id: mp
+                    multiline: False
+                    font_size: 20
+                    input_filter: 'float'
+                    on_text_validate: root.calcular()
+                Label:
+                    text:'Eficiencia para las bombas'
+                TextInput:
+                    id: nb
+                    multiline: False
+                    font_size: 20
+                    input_filter: 'float'
+                    on_text_validate: root.calcular()
+                Label:
+                    text:'Eficiencia de la turbina'
+                TextInput:
+                    id: nt
+                    multiline: False
+                    font_size: 20
+                    input_filter: 'float'
+                    on_text_validate: root.calcular()
                     #Aqui van los botones de calcular y limpiar
-                    Button:
-                        text: 'Calcular'
-                        on_press: root.resolve()
-                    Button:
-                        text: 'Limpiar'
-                        on_press: root.clear()
+                Button:
+                    text: 'Calcular'
+                    on_press: root.resolve()
+                Button:
+                    text: 'Limpiar'
+                    on_press: root.clear()
                 #Aqui va la caja general de resultados 
                 #Titulo de la caja de resultados
-                GridLayout:
-                    cols:2
-                    size_hint: None, None
-                    size: 100, 1200
-                    Label:
-                        text:'Resultados'
-                        background_color: 182/255,66/255,245/255,1
-                        font_size: 30
-                        canvas.before:
-                            Color:
-                                rgba: self.background_color
-                            Rectangle:
-                                pos: self.pos
-                                size: self.size
+                Label:
+                    text:'Resultados'
+                    background_color: 182/255,66/255,245/255,1
+                    font_size: 30
+                    canvas.before:
+                        Color:
+                            rgba: self.background_color
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
                         #Text Property
                         #color:(0,1,0,1)
-                        bold: True
-                        italic: True
+                    bold: True
+                    italic: True
                         #outline_color: 0,0,1
                         #outline_width: 10
-                    Label:
-                        text:""
+                Label:
+                    text:""
                     #Caja de resultados
-                    Label:
-                        text:'Eficiciecia termica del ciclo (%)'
-                    Label:
-                        id: eficiencia_termica
-                        text:'Respuesta 1'
-                    Label:
-                        text:'Trabajo neto del ciclo (kW)'
-                    Label:
-                        id: trabajo_neto
-                        text:'Respuesta 2'
+                Label:
+                    text:'Eficiciecia termica del ciclo (%)'
+                Label:
+                    id: eficiencia_termica
+                    text:'Respuesta 1'
+                Label:
+                    text:'Trabajo neto del ciclo (kW)'
+                Label:
+                    id: trabajo_neto
+                    text:'Respuesta 2'
 #Segunda Columna donde estara la Imagen y los resultados
 
             GridLayout:
