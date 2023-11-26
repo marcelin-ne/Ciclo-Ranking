@@ -18,11 +18,13 @@ class MyForm(BoxLayout):
         self.add_widget(self.line_drawer)
 
     def resolve(self):
+        #Restart the lines
+        self.line_drawer.redraw()
         #Create the object
         cr_close=Rankine_P_Close({},{})
         delimeter=Delimiter()
         #cr_open.calc_ciclo_rankine_in_precal_open_water(float(self.ids.pbbp.text), self.ids.pbap.text, self.ids.psal_cald.text, self.ids.tsal_cald.text, self.ids.ns_turb.text, self.ids.ns_bomba.text)
-        cr_close.calc_ciclo_rankine_in_precal_close_water(float(self.ids.p1.text), float(self.ids.x1.text), float(self.ids.p2.text), float(self.ids.p3.text), float(self.ids.x3.text), float(self.ids.T6.text), float(self.ids.mp.text), float(self.ids.nb.text), float(self.ids.nt.text))
+        cr_close.calc_ciclo_rankine_in_precal_close_water(float(self.ids.p1.text), 0, float(self.ids.p2.text), float(self.ids.p3.text), 0, float(self.ids.T6.text), float(self.ids.mp.text), float(self.ids.nb.text), float(self.ids.nt.text))
         print(cr_close.hs)
         print(cr_close.results)
         self.ids.eficiencia_termica.text = str(cr_close.results['eta']) + " %"
@@ -35,35 +37,57 @@ class MyForm(BoxLayout):
 
     def redraw_based_on_hs(self, hs):
         #h1a
-        self.line_drawer.animate_lines_horizontal('h1', hs['h1'])
+        # self.line_drawer.animate_lines_horizontal('h1', hs['h1'])
         #h2
         self.line_drawer.animate_lines_horizontal('h2a', hs['h2'])
+        #h2b
+        new_point=self.line_drawer.get_line_coordinate('h2a', 0)
+        self.line_drawer.animate_lines_grow_positive('h2b', new_point, 1)
         #h3
-        self.line_drawer.animate_lines_vertical('h3a', hs['h3'])
+        self.line_drawer.animate_lines_horizontal('h3a', hs['h3'])
         #h3b
-        self.line_drawer.animate_lines_vertical('h3b', hs['h3'])
+        new_point=self.line_drawer.get_line_coordinate('h3a', 0)
+        self.line_drawer.animate_lines_grow_positive('h3b', new_point, 1)
         #h4
         self.line_drawer.animate_lines_horizontal('h4a', hs['h4'])
         #h4b
-        self.line_drawer.animate_lines_horizontal('h4b', hs['h4'])
+        new_point=self.line_drawer.get_line_coordinate('h4a', 0)
+        self.line_drawer.animate_lines_grow_negative('h4b', new_point, 1)
         #h5
         self.line_drawer.animate_lines_horizontal('h5a', hs['h5'])
         #h6
         self.line_drawer.animate_lines_horizontal('h6a', hs['h6'])
         #h6b
-        self.line_drawer.animate_lines_horizontal('h6b', hs['h6'])
+        new_point=self.line_drawer.get_line_coordinate('h6a', 0)
+        self.line_drawer.animate_lines_grow_negative('h6b', new_point, 1)
+        # self.line_drawer.animate_lines_horizontal('h6b', hs['h6'])
         #h7
-        self.line_drawer.animate_lines_vertical('h7a', hs['h7'])
+        self.line_drawer.animate_lines_horizontal('h7a', hs['h7'])
         #h7b
-        self.line_drawer.animate_lines_vertical('h7b', hs['h7s'])
+        new_point=self.line_drawer.get_line_coordinate('h7a', 0)
+        self.line_drawer.animate_lines_grow_positive('h7b', new_point, 1)
         #h8
-        self.line_drawer.animate_lines_vertical('h8a', hs['h8'])
+        self.line_drawer.animate_lines_horizontal('h8a', hs['h8'])
         #h8b
-        self.line_drawer.animate_lines_vertical('h8b', hs['h8'])
+        new_point=self.line_drawer.get_line_coordinate('h8a', 0)
+        self.line_drawer.animate_lines_grow_positive('h8b', new_point, 1)
         #h9
         self.line_drawer.animate_lines_horizontal('h9a', hs['h9'])
         #h9b
-        self.line_drawer.animate_lines_horizontal('h9b', hs['h9'])
+        new_point=self.line_drawer.get_line_coordinate('h9a', 0)
+        self.line_drawer.animate_lines_grow_negative('h9b', new_point, 1)
+        #3h7
+        self.line_drawer.draw_line_connecting_two_lines('h3a', 'h7a', '3h7')
+        #1h2
+        self.line_drawer.draw_line_connecting_two_lines('h2a', 'h1a', '1h2')
+        #5h6
+        self.line_drawer.draw_line_connecting_two_lines('h5a', 'h6a', '5h6')
+        #4h5
+        self.line_drawer.draw_line_connecting_two_lines('h4a', 'h5a', '4h5')
+        #9h5
+        self.line_drawer.draw_line_connecting_two_lines('h9a', 'h5a', '9h5')
+        #1h8
+        self.line_drawer.draw_line_connecting_two_lines('h1a', 'h8a', '1h8')
 
 
 
@@ -75,6 +99,7 @@ class MyForm(BoxLayout):
 class MyApp(App):
     def build(self):
         Window.clearcolor = (1, 1, 1, 1)
+        Window.size = (1300, 700)
         myform_instance = MyForm()
         return MyForm()
 
