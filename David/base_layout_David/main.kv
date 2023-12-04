@@ -1,0 +1,74 @@
+<MainWindow>:
+    spacing: dp(8)
+    canvas.before:
+        Color:
+            rgba: rgba('#ffffff')
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    #The navigation menu
+    BoxLayout:
+        id: nav_menu
+        size_hint_x: .3
+        orientation: 'vertical'
+        padding:dp(8)
+        #From Here everything is in a box
+        BoxLayout:
+            id:logo_nbox
+            size_hint_y: .1
+            AnchorLayout: #Push the widget to the center
+                anchor_x:'right'
+                size_hint_x: None
+                width: dp(42)
+                IconButton:
+                    source:'../assets/imgs/logo.png'
+                    size_hint: None, None
+                    size: dp(48), dp(48)
+            TextInput:
+                text:'Unique Bash'
+        BoxLayout:
+            id:tabs_box
+            size_hint_y: .6
+        BoxLayout:
+            id:sec_nbox
+            size_hint_y: .3
+    #The main content
+    BoxLayout:
+        size_hint_x: .7
+        spacing: dp(8)
+        orientation: 'vertical'
+        padding: ('10dp', '8dp', '12dp', '8dp')
+        canvas.before:
+            Color:
+                rgba: rgba('#afffff')
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        #The action bar top
+        BoxLayout:
+            id: actionbar
+            size_hint_y: None
+            spacing: dp(8)
+            height: dp(74)
+            canvas.before:
+                Color:
+                    rgba: rgba('#fff81f')
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+        BoxLayout:
+            ScreenManager:
+                id: screen_manager
+
+                Screen:
+                    name: 'scrn_form'
+
+                Screen:
+                    name: 'scrn_graph'
+
+                Screen:
+                    name: 'scrn_results_ps'
+
+                Screen:
+                    name: 'scrn_work_result'

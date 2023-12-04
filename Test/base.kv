@@ -1,3 +1,20 @@
+#Label Style
+<Label>:
+    font_size: 15
+    color: (1, 1, 1, 1)
+    size_hint: (1, .1)
+    padding: 15
+    spacing: 5  # spacing between widgets
+    halign: 'left' # align text to the left
+    text_size: self.width, None # text wraps within the widget
+<TextInput>:
+    multiline: False
+    font_size: 20
+    input_filter: 'float'
+    size_hint: (0.5, 0.5)
+    padding: 15
+    spacing: 5  # spacing between widgets
+
 <BaseLayout>:
     cols: 3
     spacing: 10
@@ -13,123 +30,62 @@
             size: 50, 50
 
         GridLayout:
-            cols: 2
+            cols: 1
             size_hint: (1, .9)
             padding: 15
             spacing: 20  # spacing between widgets
 
             Label:
                 text: 'Presión a la salida del condensador en Pa'
-                color: (0, 0, 0, 1)
-                font_size: 20
-
             TextInput:
                 id: p1
-                multiline: False
-                font_size: 20
-                input_filter: 'float'
-                on_text_validate: root.calcular()
-
+                #on_text_validate: root.calcular()
             Label:
                 text: 'Calidad salida del condensador'
-                color: (0, 0, 0, 1)
-                font_size: 20
-
             TextInput:
                 id: x1
                 multiline: False
                 font_size: 20
                 input_filter: 'float'
                 #on_text_validate: root.calcular()
-
             Label:
                 text: 'Presión a la salida de la segunda bomba en Pa'
-                color: (0, 0, 0, 1)
-                font_size: 20
-
             TextInput:
                 id: p2
-                multiline: False
-                font_size: 20
-                input_filter: 'float'
                 #on_text_validate: root.calcular()
-
             Label:
                 text: 'Presión a la salida del calentador de agua de alimentación baja en Pa'
-                color: (0, 0, 0, 1)
-                font_size: 20
-
             TextInput:
                 id: p3
-                multiline: False
-                font_size: 20
-                input_filter: 'float'
                 #on_text_validate: root.calcular()
-
             Label:
                 text: 'Condensación completa en el calentador cerrado de agua de alimentación'
-                color: (0, 0, 0, 1)
-                font_size: 20
-
             TextInput:
                 id: x3
-                multiline: False
-                font_size: 20
-                input_filter: 'float'
                 #on_text_validate: root.calcular()
-
             Label:
                 text: 'Temperatura en la salida de la caldera/entrada de la turbina en °C'
-                color: (0, 0, 0, 1)
-                font_size: 20
-
             TextInput:
                 id: T6
-                multiline: False
-                font_size: 20
-                input_filter: 'float'
                 #on_text_validate: root.calcular()
-
             Label:
                 text: 'Flujo masico en kg/s'
-                color: (0, 0, 0, 1)
-                font_size: 20
-
             TextInput:
                 id: mp
-                multiline: False
-                font_size: 20
-                input_filter: 'float'
                 #on_text_validate: root.calcular()
-
             Label:
                 text: 'Eficiencia para las bombas'
-                color: (0, 0, 0, 1)
-                font_size: 20
-
             TextInput:
                 id: nb
-                multiline: False
-                font_size: 20
-                input_filter: 'float'
-                on_text_validate: root.calcular()
-
+                #on_text_validate: root.calcular()
             Label:
                 text: 'Eficiencia de la turbina'
-                color: (0, 0, 0, 1)
-                font_size: 20
-
             TextInput:
                 id: nt
-                multiline: False
-                font_size: 20
-                input_filter: 'float'
                 on_text_validate: root.calcular()
-
             Button:
                 text: 'Calcular'
                 on_press: root.calcular()
-
             Button:
                 text: 'Reiniciar'
                 on_press: root.reiniciar()

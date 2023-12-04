@@ -1,0 +1,208 @@
+<Button>
+    font_size: 50
+    size_hint: 0.2, 0.2
+<Label>
+    size_hint: None, None
+    size: 400, 50  # Ajusta el tamaño según tus necesidades
+    text_size: self.width, None  # El ancho del área de texto es el mismo que el ancho del Label
+    halign: 'center'  # Alinea el texto al centro horizontalmente
+    valign: 'middle'
+<TextInput>
+    size_hint:None, None
+    size: 150,50   # Alinea el texto al centro verticalmente
+<MyForm>
+    #Grid general de toda la pantalla
+    BoxLayout:
+        orientation: 'vertical'
+        size: root.width, root.height
+        padding: 15
+        spacing: 20 #spacing between widgets
+    #Titulo de la aplicacion
+        Label:
+            text:'Ciclo Rankine Calentador Cerrado'
+            background_color: 182/255,66/255,245/255,1
+            font_size: 50
+            size_hint: (1, .1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            #Text Property
+            #color:(0,1,0,1) 
+            bold: True
+            italic: True
+            #outline_color: 0,0,1
+            #outline_width: 10
+        #Division de la pantalla general en dos columnas 
+        GridLayout:
+            cols:2
+            padding: 15
+            spacing: 20
+            #Primera Columna donde estaran los datos de entrada
+            GridLayout:
+                cols:2
+                size_hint: (1, .9)
+                padding: 15
+                spacing: 20 #spacing between widgets
+                Label:
+                    text:'Presión a la salida del condensador en Pa'
+                    color:(0,0,0,1)
+                    font_size: 20
+                TextInput:
+                    id: p1
+                    multiline: False
+                    font_size: 20
+                    input_filter: 'float'
+                    on_text_validate: root.calcular()
+                Label:
+                    text:'Calidad salida del condensador'
+                    color:(0,0,0,1)
+                    font_size: 20
+                TextInput:
+                    id: x1
+                    multiline: False
+                    font_size: 20
+                    input_filter: 'float'
+                    on_text_validate: root.calcular()
+                Label:
+                    text:'Presión a la salida de la segunda bomba en Pa'
+                    color:(0,0,0,1)
+                    font_size: 20
+                TextInput:
+                    id: p2
+                    multiline: False
+                    font_size: 20
+                    input_filter: 'float'
+                    on_text_validate: root.calcular()
+                Label:
+                    text:'Presión a la salida del calentador de agua de alimentación baja en Pa'
+                    color:(0,0,0,1)
+                    font_size: 20
+                TextInput:
+                    id: p3
+                    multiline: False
+                    font_size: 20
+                    input_filter: 'float'
+                    on_text_validate: root.calcular()
+                Label:
+                    text:'Condensación completa en el calentador cerrado de agua de alimentación'
+                    color:(0,0,0,1)
+                    font_size: 20
+                TextInput:
+                    id: x3
+                    multiline: False
+                    font_size: 20
+                    input_filter: 'float'
+                    on_text_validate: root.calcular()
+                Label:
+                    text:'Temperatura en la salida de la caldera/entrada de la turbina en °C'
+                    color:(0,0,0,1)
+                    font_size: 20
+                TextInput:
+                    id: T6
+                    multiline: False
+                    font_size: 20
+                    input_filter: 'float'
+                    on_text_validate: root.calcular()
+                Label:
+                    text:'Flujo masico en kg/s'
+                    color:(0,0,0,1)
+                    font_size: 20
+                TextInput:
+                    id: mp
+                    multiline: False
+                    font_size: 20
+                    input_filter: 'float'
+                    on_text_validate: root.calcular()
+                Label:
+                    text:'Eficiencia para las bombas'
+                    color:(0,0,0,1)
+                    font_size: 20
+                TextInput:
+                    id: nb
+                    multiline: False
+                    font_size: 20
+                    input_filter: 'float'
+                    on_text_validate: root.calcular()
+                Label:
+                    text:'Eficiencia de la turbina'
+                    color:(0,0,0,1)
+                    font_size: 20
+                TextInput:
+                    id: nt
+                    multiline: False
+                    font_size: 20
+                    input_filter: 'float'
+                    on_text_validate: root.calcular()
+                #Aqui van los botones de calcular y limpiar
+                Button:
+                    text: 'Calcular'
+                    font_size: 20
+                    on_press: root.resolve()
+                    size_hint: 0.4, 0.4
+                Button:
+                    text: 'Limpiar'
+                    font_size: 20
+                    size_hint: 0.4, 0.4
+                    on_press: root.clear()
+                #Aqui va la caja general de resultados 
+                #Titulo de la caja de resultados
+                Label:
+                    text:'Resultados'
+                    background_color: 182/255,66/255,245/255,1
+                    font_size: 30
+                    canvas.before:
+                        Color:
+                            rgba: self.background_color
+                        Rectangle:
+                            pos: self.pos
+                            size: self.size
+                    #Text Property
+                    #color:(0,1,0,1) 
+                    bold: True
+                    italic: True
+                    #outline_color: 0,0,1
+                    #outline_width: 10
+                Label:
+                    text:""
+                #Caja de resultados
+                Label:
+                    text:'Eficiciecia termica del ciclo (%)'
+                    color:(0,0,0,1)
+                    font_size: 20
+                Label:
+                    id: eficiencia_termica
+                    text:'Respuesta 1'
+                    color:(0,0,0,1)
+                    font_size: 20
+                Label:
+                    text:'Trabajo neto del ciclo (kW)'
+                    color:(0,0,0,1)
+                    font_size: 20
+                Label:
+                    id: trabajo_neto
+                    text:'Respuesta 2'
+                    color:(0,0,0,1)
+                    font_size: 20
+#Segunda Columna donde estara la Imagen y los resultados
+
+            GridLayout:
+                cols:1
+                size_hint: (1, .1)
+                border: 2,2,2,2
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint: 1, 1
+                    Image:
+                        source:"Ciclo_rakine_1.png"
+                        size_hint: 1, 1 #Tamaño completo de la celda
+                        allow_stretch: True
+                        keep_ratio: True
+                        #size_hint: 0.5, 0.5 #Tamaño completo de la celda
+                        pos_hint: {'center_x': 2.0, 'center_y': 0.0}
+                            #pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    # LineDrawer:
+                    #     size_hint: 1, 1 #Tamaño completo de la celda
+                    #     pos_hint: {'center_x': 1.5, 'center_y': 1.5} #Posicionamiento en el centro de la celda#Posicionamiento en el centro de la celda
