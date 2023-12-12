@@ -1,0 +1,205 @@
+<MDRoundFlatButton>:
+
+Screen:
+    MDCard:
+        size_hint: None,None
+        size: 800,1000
+        pos_hint: {"center_x": .2, "center_y": .7}
+        elevation: 10 #Shadow
+        padding: ('25dp', '25dp', '25dp', '25dp')
+        spacing:40
+        orientation: 'vertical'
+        MDLabel:
+            id:Data_input_label
+            text: "Datos de Entrada"
+            font_size: 40
+            halign: "center"
+            size_hint_y: None
+            height: self.texture_size[1]
+            padding_y: 15
+        MDTextField:
+            id:user #Temperatura --> variable?
+            hint_text: "Presion de la bomba de baja presion (KPa)"
+            mode: "round"
+            max_text_length: 15
+            helper_text: "Massage"
+            icon_right: "thermometer-low"
+            icon_right_color_focus: "orange"
+        MDTextField:
+            id:password #presion --> variable?
+            hint_text: "Presion de la bomba de alta presion (KPa)"
+            mode: "round"
+            max_text_length: 15
+            helper_text: "Massage"
+            icon_right: "eye-off"
+            icon_right_color_focus: "orange"
+        MDTextField:
+            id:password #presion --> variable?
+            hint_text: "Presión de la caldera"
+            mode: "round"
+            max_text_length: 15
+            helper_text: "Massage"
+            icon_right: "eye-off"
+            icon_right_color_focus: "orange"
+        MDTextField:
+            id:password #presion --> variable?
+            hint_text: "Tempratura de la caldera (°C)"
+            mode: "round"
+            max_text_length: 15
+            helper_text: "Massage"
+            icon_right: "eye-off"
+            icon_right_color_focus: "orange"
+        MDTextField:
+            id:password #presion --> variable?
+            hint_text: "Eficiancia turbina (isentropica)"
+            mode: "round"
+            max_text_length: 15
+            helper_text: "Massage"
+            icon_right: "percent-outline"
+            icon_right_color_focus: "orange"
+        MDTextField:
+            id:password #presion --> variable?
+            hint_text: "Eficiencia bomba (isentropicas)"
+            mode: "round"
+            max_text_length: 15
+            helper_text: "Massage"
+            icon_right: "percent-outline"
+            icon_right_color_focus: "orange"
+        BoxLayout:
+            orientation: 'horizontal'
+            spacing: 10  # Espacio entre los botones
+
+            MDRoundFlatButton:
+                text: "Calcular"
+                font_size: 20
+                size_hint_x: 0.4
+                #on_press: app.login()
+
+            MDRoundFlatButton:
+                text: "Clear"
+                font_size: 20
+                size_hint_x: 0.4
+                #on_press: app.clear()
+
+    MDCard:
+        size_hint: None,None
+        size: 800,650
+        pos_hint: {"center_x": .2, "center_y": .2}
+        elevation: 10 #Shadow
+        padding: ('25dp', '25dp', '25dp', '25dp')
+        spacing:25
+        orientation: 'vertical'
+        MDLabel:
+            id:Data_input_label
+            text: "Results"
+            font_size: 40
+            halign: "center"
+            size_hint_y: None
+            height: self.texture_size[1]
+            padding_y: 15
+        MDLabel:
+            id:user #Temperatura --> variable?
+            text: "Calor de Entrada: "
+            font_size: 25
+        MDLabel:
+            id:password #presion --> variable?
+            text: "Calor de Salida:"
+            font_size: 25
+        MDLabel:
+            id:password #presion --> variable?
+            text: "Calor en el intercambiador"
+            font_size: 25
+        MDLabel:
+            id:password #presion --> variable?
+            text: "Eficiencia de ciclo"
+            font_size: 25
+        MDLabel:
+            id:password #presion --> variable?
+            text: "Trabajo Neto"
+            font_size: 25
+    MDCard:
+        size_hint: None,None
+        size: 800,500
+        pos_hint: {"center_x": .55, "center_y": .2}
+        elevation: 10 #Shadow
+        padding: ('25dp', '25dp', '25dp', '25dp')
+        spacing:40
+        orientation: 'vertical'
+        MDLabel:
+            id:Data_input_label
+            text: "Fraccion de Vapor"
+            font_size: 40
+            halign: "center"
+            size_hint_y: None
+            height: self.texture_size[1]
+            padding_y: 15
+        MDLabel:
+            id:password #presion --> variable?
+            text: "Y"
+            font_size: 25
+        MDLabel:
+            id:password #presion --> variable?
+            text: "y-1"
+            font_size: 25
+    MDCard:
+        size_hint: None,None
+        size: 1800,1000
+        elevation: 10 #Shadow
+        padding: ('25dp', '25dp', '25dp', '25dp')
+        spacing:40
+        orientation: 'vertical'
+        pos_hint: {"center_x": .7, "center_y": .7}
+        MDLabel:
+            text: "Ciclo Rankine con precalentador abierto"
+            font_size: 40
+            halign: "center"
+            size_hint_y: None
+            height: self.texture_size[1]
+            padding_y: 15
+        Image:
+            source: 'base_image.png'
+            allow_stretch: True  # Permite estirar la imagen para ajustarse al tamaño de la Card
+    MDCard:
+        size_hint: None,None
+        size: 800,650
+        pos_hint: {"center_x": .85, "center_y": .2}
+        elevation: 10 #Shadow
+        padding: ('25dp', '25dp', '25dp', '25dp')
+        spacing:25
+        orientation: 'vertical'
+        MDLabel:
+            id:Data_input_label
+            text: "Entalpias"
+            font_size: 40
+            halign: "center"
+            size_hint_y: None
+            height: self.texture_size[1]
+            padding_y: 15
+        MDLabel:
+            id:user #Temperatura --> variable?
+            text: "H1 "
+            font_size: 25
+        MDLabel:
+            id:password #presion --> variable?
+            text: "h2"
+            font_size: 25
+        MDLabel:
+            id:password #presion --> variable?
+            text: "h3"
+            font_size: 25
+        MDLabel:
+            id:password #presion --> variable?
+            text: "h4"
+            font_size: 25
+        MDLabel:
+            id:password #presion --> variable?
+            text: "h5"
+            font_size: 25
+        MDLabel:
+            id:password #presion --> variable?
+            text: "h6"
+            font_size: 25
+        MDLabel:
+            id:password #presion --> variable?
+            text: "h7"
+            font_size: 25

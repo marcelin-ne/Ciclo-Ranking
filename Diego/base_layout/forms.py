@@ -5,7 +5,7 @@ from kivy.core.window import Window
 
 class MainApp(MDApp):
     def build(self):
-        Window.size = (1400, 1000)
+        # Window.size = (1000, 900)
         self.theme_cls.theme_style = "Dark"
         #light theme
         self.theme_cls.primary_palette = "Amber"
