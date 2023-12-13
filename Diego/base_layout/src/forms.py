@@ -10,7 +10,8 @@ class MainApp(MDApp):
         #light theme
         self.theme_cls.primary_palette = "Amber"
         self.theme_cls.accent_palette = "Red"
-        return Builder.load_file('forms.kv')
+        return Builder.load_file('../desing/forms.kv')
+        # return Builder.load_file('forms.kv')
     def login(self):
         self.root.ids.welcome_label.text = "Hello " + self.root.ids.user.text
     def clear(self):
