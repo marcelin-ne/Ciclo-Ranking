@@ -14,8 +14,8 @@ from kivy.properties import AliasProperty
 class LineDrawer(Widget):
     def __init__(self, **kwargs):
         super(LineDrawer, self).__init__(**kwargs)
-        self.bind(size=self.redraw)
-        self.draw_base()
+        # self.bind(size=self.redraw)
+        # self.draw_base()
 
     def update_and_redraw(self, new_h6):
         # Actualizar el valor de length_h6

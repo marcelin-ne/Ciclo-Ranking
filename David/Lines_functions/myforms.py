@@ -6,17 +6,27 @@ from kivy.uix.widget import Widget
 from calculator import Rankine_P_Close
 from delimeter import Delimiter
 from line_drawer import LineDrawer
-
+from kivy.graphics import Color, InstructionGroup, Line
 Builder.load_file('myform.kv')
 
 class MyForm(BoxLayout):
-    line_drawer = LineDrawer()
+    # line_drawer = LineDrawer(
     def __init__(self,**kwargs):
         super(MyForm, self).__init__(**kwargs)
         self.hs= {}
         self.line_drawer = LineDrawer()
         self.add_widget(self.line_drawer)
+        # Crear un InstructionGroup para contener las instrucciones de dibujo
+        self.cuadrado_instruction = InstructionGroup()
 
+            # Coordenadas del cuadrado (ejemplo: 100x100 con un tamaño de 200x200)
+        x, y, size = 1300, 200, 1100
+
+            # Agregar líneas para formar un cuadrado
+        self.cuadrado_instruction.add(Line(points=[x, y, x + size, y, x + size, y + size, x, y + size, x, y]))
+
+        self.canvas.add(self.cuadrado_instruction)
+    
     def resolve(self):
         #Restart the lines
         self.line_drawer.redraw()
